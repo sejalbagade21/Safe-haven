@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeHaven - Anonymous Support Community</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loading-screen">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <h3>Loading SafeHaven...</h3>
+            <p>Creating a safe environment for you</p>
+        </div>
+    </div>
+
+    <!-- Safety Notice Modal -->
+    <div class="safety-notice" id="safety-notice"> 
+        <div class="safety-content">
+            <div class="safety-header">
+                <div class="safety-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h2>Welcome to SafeHaven</h2>
+                <p>Your safety and privacy are our top priorities</p>
+            </div>
+            
+            <div class="safety-body">
+                <div class="safety-section">
+                    <h3><i class="fas fa-heart"></i> What is SafeHaven?</h3>
+                    <p>SafeHaven is a confidential, anonymous community where you can share your experiences, find support, and connect with others who understand. This is a safe environment for healing and support.</p>
+                </div>
+
+                <div class="safety-section">
+                    <h3><i class="fas fa-exclamation-triangle"></i> Important Safety Information</h3>
+                    <div class="crisis-resources">
+                        <div class="emergency-contact">
+                            <strong>If you're in immediate danger:</strong>
+                            <a href="tel:911" class="emergency-btn">
+                                <i class="fas fa-phone"></i> Call 911
+                            </a>
+                        </div>
+                        <div class="crisis-hotlines">
+                            <a href="tel:1-800-656-4673" class="crisis-btn">
+                                <i class="fas fa-phone"></i> National Sexual Assault Hotline: 1-800-656-4673
+                            </a>
+                            <a href="tel:1-800-799-7233" class="crisis-btn">
+                                <i class="fas fa-phone"></i> National Domestic Violence Hotline: 1-800-799-7233
+                            </a>
+                            <a href="https://hotline.rainn.org/online" target="_blank" class="crisis-btn">
+                                <i class="fas fa-comments"></i> RAINN Online Chat
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="safety-section">
+                    <h3><i class="fas fa-lock"></i> Privacy & Anonymity</h3>
+                    <ul class="privacy-list">
+                        <li><i class="fas fa-check"></i> All posts are completely anonymous</li>
+                        <li><i class="fas fa-check"></i> No personal information is collected</li>
+                        <li><i class="fas fa-check"></i> Messages are encrypted and secure</li>
+                        <li><i class="fas fa-check"></i> You can leave anytime with the emergency exit</li>
+                        <li><i class="fas fa-check"></i> No tracking or cookies are used</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="safety-actions">
+                <button class="close-notice" onclick="closeSafetyNotice()">
+                    <i class="fas fa-check"></i> I Understand & Enter SafeHaven
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Application -->
+    <div class="app-container" id="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo">
+                        <i class="fas fa-dove"></i>
+                    </div>
+                    <div class="logo-text">
+                        <h1>SafeHaven</h1>
+                        <p>Anonymous Support Community</p>
+                    </div>
+                </div>
+                
+                <div class="header-actions">
+                    <div class="user-info" id="user-info" style="display: none;">
+                        <span class="anonymous-id" id="anonymous-id"></span>
+                        <button class="logout-btn" onclick="logout()">
+                            <i class="fas fa-sign-out-alt"></i> Leave
+                        </button>
+                    </div>
+                    <button class="emergency-exit-btn" onclick="emergencyExit()" title="Emergency Exit (Alt + X)">
+                        <i class="fas fa-running"></i>
+                        <span>Emergency Exit</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Welcome Section -->
+            <section class="welcome-section" id="welcome-section">
+                <div class="welcome-content">
+                    <div class="welcome-hero">
+                        <div class="hero-icon">
+                            <i class="fas fa-dove"></i>
+                        </div>
+                        <h2>Welcome to SafeHaven</h2>
+                        <p>A confidential, anonymous community where you can share your experiences, find support, and connect with others who understand.</p>
+                    </div>
+
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-user-secret"></i>
+                            </div>
+                            <h3>Complete Anonymity</h3>
+                            <p>Share your story without revealing your identity. All posts are completely anonymous.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-hands-helping"></i>
+                            </div>
+                            <h3>Peer Support</h3>
+                            <p>Connect with others who have similar experiences. Find understanding and support.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <h3>Group Chats</h3>
+                            <p>Join anonymous group conversations for real-time support and connection.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3>Safe Environment</h3>
+                            <p>Moderated community with strict guidelines to ensure everyone feels safe.</p>
+                        </div>
+                    </div>
+
+                    <div class="community-guidelines">
+                        <h3><i class="fas fa-users"></i> Community Guidelines</h3>
+                        <div class="guidelines-grid">
+                            <div class="guideline-item">
+                                <i class="fas fa-heart"></i>
+                                <span>Be supportive and respectful</span>
+                            </div>
+                            <div class="guideline-item">
+                                <i class="fas fa-user-secret"></i>
+                                <span>Maintain anonymity</span>
+                            </div>
+                            <div class="guideline-item">
+                                <i class="fas fa-ban"></i>
+                                <span>No judgment or victim-blaming</span>
+                            </div>
+                            <div class="guideline-item">
+                                <i class="fas fa-share"></i>
+                                <span>Share only what you're comfortable with</span>
+                            </div>
+                            <div class="guideline-item">
+                                <i class="fas fa-flag"></i>
+                                <span>Report any concerning behavior</span>
+                            </div>
+                            <div class="guideline-item">
+                                <i class="fas fa-running"></i>
+                                <span>Use emergency exit if needed</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="enter-actions">
+                        <button class="enter-btn primary" onclick="enterCommunity()">
+                            <i class="fas fa-door-open"></i>
+                            Enter SafeHaven
+                        </button>
+                        <button class="enter-btn secondary" onclick="showSafetyInfo()">
+                            <i class="fas fa-info-circle"></i>
+                            Learn More
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Community Section -->
+            <section class="community-section" id="community-section" style="display: none;">
+                <!-- Navigation Tabs -->
+                <div class="nav-tabs">
+                    <button class="nav-tab active" data-tab="posts">
+                        <i class="fas fa-comments"></i>
+                        <span>Community Posts</span>
+                    </button>
+                    <button class="nav-tab" data-tab="chat">
+                        <i class="fas fa-users"></i>
+                        <span>Group Chats</span>
+                    </button>
+                    <button class="nav-tab" data-tab="resources">
+                        <i class="fas fa-hands-helping"></i>
+                        <span>Support Resources</span>
+                    </button>
+                </div>
+
+                <!-- Tab Content -->
+                <div class="tab-content active" id="posts-tab">
+                    <div class="tab-header">
+                        <h2><i class="fas fa-comments"></i> Community Posts</h2>
+                        <button class="new-post-btn" onclick="showNewPostForm()">
+                            <i class="fas fa-plus"></i>
+                            Share Your Story
+                        </button>
+                    </div>
+
+                    <!-- New Post Form -->
+                    <div class="new-post-form" id="new-post-form" style="display: none;">
+                        <div class="form-header">
+                            <h3><i class="fas fa-edit"></i> Share Your Story</h3>
+                            <button class="close-form" onclick="hideNewPostForm()">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        
+                        <form id="post-form">
+                            <div class="form-group">
+                                <label for="post-title">Title (optional)</label>
+                                <input type="text" id="post-title" placeholder="Brief title for your post...">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="post-content">Your Message</label>
+                                <textarea id="post-content" rows="6" placeholder="Share your thoughts, experiences, or ask for support..."></textarea>
+                                <div class="char-counter">
+                                    <span id="char-count">0</span> characters
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="post-type">Type of Post</label>
+                                <select id="post-type">
+                                    <option value="support">Looking for Support</option>
+                                    <option value="share">Sharing Experience</option>
+                                    <option value="advice">Seeking Advice</option>
+                                    <option value="healing">Healing Journey</option>
+                                    <option value="resources">Sharing Resources</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="button" class="cancel-btn" onclick="hideNewPostForm()">
+                                    <i class="fas fa-times"></i> Cancel
+                                </button>
+                                <button type="submit" class="submit-btn">
+                                    <i class="fas fa-paper-plane"></i> Share Anonymously
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Posts Feed -->
+                    <div class="posts-feed" id="posts-feed">
+                        <div class="loading-posts">
+                            <div class="loading-spinner"></div>
+                            <p>Loading community posts...</p>
+                        </div>
+                    </div>
+
+                    <!-- Load More Button -->
+                    <div class="load-more-container" id="load-more-container" style="display: none;">
+                        <button class="load-more-btn" onclick="loadMorePosts()">
+                            <i class="fas fa-plus"></i> Load More Posts
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Chat Tab -->
+                <div class="tab-content" id="chat-tab">
+                    <div class="chat-container">
+                        <!-- Chat Rooms List -->
+                        <div class="chat-rooms-list" id="chat-rooms-list">
+                            <div class="tab-header">
+                                <h2><i class="fas fa-users"></i> Group Chats</h2>
+                                <p>Join anonymous group conversations for real-time support</p>
+                            </div>
+                            <div class="rooms-grid" id="rooms-grid">
+                                <div class="loading-rooms">
+                                    <div class="loading-spinner"></div>
+                                    <p>Loading chat rooms...</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Chat Messages -->
+                        <div class="chat-messages" id="chat-messages" style="display: none;">
+                            <div class="chat-header">
+                                <button class="back-to-rooms" onclick="showChatRooms()">
+                                    <i class="fas fa-arrow-left"></i>
+                                </button>
+                                <div class="room-info">
+                                    <h3 id="current-room-name">Chat Room</h3>
+                                    <p id="current-room-description">Anonymous group chat</p>
+                                </div>
+                            </div>
+                            
+                            <div class="messages-container" id="messages-container">
+                                <div class="no-messages">
+                                    <i class="fas fa-comments"></i>
+                                    <p>No messages yet. Be the first to say hello!</p>
+                                </div>
+                            </div>
+                            
+                            <div class="message-input-container">
+                                <form id="message-form">
+                                    <div class="message-input-group">
+                                        <textarea id="message-input" placeholder="Type your message..." rows="1"></textarea>
+                                        <button type="submit" class="send-btn">
+                                            <i class="fas fa-paper-plane"></i>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resources Tab -->
+                <div class="tab-content" id="resources-tab">
+                    <div class="tab-header">
+                        <h2><i class="fas fa-hands-helping"></i> Support Resources</h2>
+                        <p>Professional help and crisis resources</p>
+                    </div>
+
+                    <div class="support-resources" id="support-resources">
+                        <div class="crisis-section">
+                            <h3><i class="fas fa-exclamation-triangle"></i> Crisis Resources</h3>
+                            <div class="crisis-grid">
+                                <div class="crisis-card emergency">
+                                    <div class="crisis-icon">
+                                        <i class="fas fa-phone"></i>
+                                    </div>
+                                    <h4>Emergency Services</h4>
+                                    <p>If you're in immediate danger</p>
+                                    <a href="tel:911" class="crisis-link emergency">
+                                        <i class="fas fa-phone"></i> Call 911
+                                    </a>
+                                </div>
+                                
+                                <div class="crisis-card">
+                                    <div class="crisis-icon">
+                                        <i class="fas fa-phone"></i>
+                                    </div>
+                                    <h4>National Sexual Assault Hotline</h4>
+                                    <p>24/7 confidential support</p>
+                                    <a href="tel:1-800-656-4673" class="crisis-link">
+                                        <i class="fas fa-phone"></i> 1-800-656-4673
+                                    </a>
+                                </div>
+                                
+                                <div class="crisis-card">
+                                    <div class="crisis-icon">
+                                        <i class="fas fa-phone"></i>
+                                    </div>
+                                    <h4>National Domestic Violence Hotline</h4>
+                                    <p>24/7 support and resources</p>
+                                    <a href="tel:1-800-799-7233" class="crisis-link">
+                                        <i class="fas fa-phone"></i> 1-800-799-7233
+                                    </a>
+                                </div>
+                                
+                                <div class="crisis-card">
+                                    <div class="crisis-icon">
+                                        <i class="fas fa-comments"></i>
+                                    </div>
+                                    <h4>RAINN Online Chat</h4>
+                                    <p>Confidential online support</p>
+                                    <a href="https://hotline.rainn.org/online" target="_blank" class="crisis-link">
+                                        <i class="fas fa-external-link-alt"></i> Chat Online
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="resources-section">
+                            <h3><i class="fas fa-info-circle"></i> Additional Resources</h3>
+                            <div class="resources-grid" id="resources-grid">
+                                <div class="loading-resources">
+                                    <div class="loading-spinner"></div>
+                                    <p>Loading resources...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>SafeHaven</h4>
+                    <p>A confidential, anonymous community for support and healing</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="#" onclick="showPrivacyPolicy()">Privacy Policy</a>
+                        <a href="#" onclick="showTerms()">Terms of Use</a>
+                        <a href="#" onclick="showSafetyInfo()">Safety Information</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Emergency</h4>
+                    <div class="emergency-links">
+                        <a href="tel:911">911</a>
+                        <a href="tel:1-800-656-4673">RAINN Hotline</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 SafeHaven | A supportive community for healing and support</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal" id="privacy-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-shield-alt"></i> Privacy Policy</h2>
+                <button class="close" onclick="closeModal('privacy-modal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h3>Your Privacy is Our Priority</h3>
+                <ul>
+                    <li>No personal information is collected or stored</li>
+                    <li>All posts are completely anonymous</li>
+                    <li>No IP addresses or location data is tracked</li>
+                    <li>Messages are not saved permanently</li>
+                    <li>You can delete your posts at any time</li>
+                    <li>No cookies or tracking technologies are used</li>
+                </ul>
+                <p><strong>Note:</strong> This is a demonstration platform. For real support, please use established organizations like RAINN.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="terms-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-file-contract"></i> Terms of Use</h2>
+                <button class="close" onclick="closeModal('terms-modal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h3>Community Guidelines</h3>
+                <ul>
+                    <li>Be respectful and supportive of all members</li>
+                    <li>No harassment, bullying, or harmful content</li>
+                    <li>No sharing of personal information</li>
+                    <li>No promotion of harmful behaviors</li>
+                    <li>Report any concerning content immediately</li>
+                    <li>This platform is for support and healing only</li>
+                </ul>
+                <p><strong>Important:</strong> This is a demonstration. For real support, contact professional organizations.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="safety-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-exclamation-triangle"></i> Safety Information</h2>
+                <button class="close" onclick="closeModal('safety-modal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h3>If You're in Immediate Danger:</h3>
+                <p><strong>Call 911 immediately</strong></p>
+                
+                <h3>Crisis Resources:</h3>
+                <ul>
+                    <li><strong>National Sexual Assault Hotline:</strong> 1-800-656-4673</li>
+                    <li><strong>RAINN Online Chat:</strong> <a href="https://hotline.rainn.org/online" target="_blank">hotline.rainn.org</a></li>
+                    <li><strong>National Domestic Violence Hotline:</strong> 1-800-799-7233</li>
+                    <li><strong>Crisis Text Line:</strong> Text HOME to 741741</li>
+                </ul>
+                
+                <h3>Safety Tips:</h3>
+                <ul>
+                    <li>Trust your instincts</li>
+                    <li>Keep emergency contacts handy</li>
+                    <li>Have a safety plan</li>
+                    <li>Document incidents if safe to do so</li>
+                    <li>Seek professional help when ready</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="report-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-flag"></i> Report Content</h2>
+                <button class="close" onclick="closeModal('report-modal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="report-form">
+                    <div class="form-group">
+                        <label for="report-reason">Reason for Report:</label>
+                        <select id="report-reason" required>
+                            <option value="">Select a reason...</option>
+                            <option value="harassment">Harassment or Bullying</option>
+                            <option value="inappropriate">Inappropriate Content</option>
+                            <option value="spam">Spam or Advertising</option>
+                            <option value="personal_info">Sharing Personal Information</option>
+                            <option value="harmful">Harmful or Dangerous Content</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="report-description">Additional Details:</label>
+                        <textarea id="report-description" rows="4" placeholder="Please provide additional details about your report..."></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="cancel-btn" onclick="closeModal('report-modal')">Cancel</button>
+                        <button type="submit" class="submit-btn">Submit Report</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success/Error Messages -->
+    <div class="message-toast" id="message-toast"></div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
